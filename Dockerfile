@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && mkdir -p /usr/share/man/man1/ && apt-get install --no-install-recommends -y openjdk-8-jdk-headless wget\
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV VERSION=1.3.1.8
+ENV VERSION=1.3.3.18
 RUN mkdir -p /tmp /src && wget -nv https://github.com/yahoo/kafka-manager/archive/$VERSION.tar.gz -O /tmp/kafka-manager.tar.gz\
   && tar -xf /tmp/kafka-manager.tar.gz -C /src && cd /src/kafka-manager-$VERSION \
   && echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt\
@@ -16,7 +16,7 @@ RUN mkdir -p /tmp /src && wget -nv https://github.com/yahoo/kafka-manager/archiv
 FROM debian:stretch-slim
 
 ENV LANG C.UTF-8
-ENV VERSION=1.3.1.8
+ENV VERSION=1.3.3.18
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && mkdir -p /usr/share/man/man1/ \
